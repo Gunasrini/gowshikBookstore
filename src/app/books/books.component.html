@@ -1,0 +1,45 @@
+<div class="container pt-5">
+
+    <div class="col-md-4">
+        <h3>Add Books:</h3>
+        <form [formGroup]="bookForm">
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" id="bookid" name="bookid" placeholder="Enter the book ID"
+                    formControlName="bookid">
+            </div>
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" id="bookname" name="bookname" placeholder="Enter the book name"
+                    formControlName="bookname">
+                <div class="errorMsg" *ngIf="!bookForm.get('bookname')?.valid && bookForm.get('bookname')?.touched">
+                    Please enter the bookname</div>
+            </div>
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" id="author" name="author" placeholder="Enter the author name"
+                    formControlName="author">
+            </div>
+            <button type="submit" class="btn btn-success" (click)="addBooks()" [disabled]="!bookForm.valid">Add
+                Book</button>
+            <button type="submit" class="btn btn-success ml-4" (click)="getBooks()">Get Book
+                List</button>
+        </form>
+
+        <div class="pt-4" *ngIf="myBooks.length > 0">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                </tr>
+                <tr *ngFor="let b of myBooks">
+                    <td>{{b.bookid}}</td>
+                    <td>{{b.bookname}}</td>
+                    <td>{{b.author}}</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <!-- {{bookForm.value | json}} -->
+
+    </div>
+</div>

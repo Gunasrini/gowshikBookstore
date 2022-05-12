@@ -1,0 +1,29 @@
+<div class="container pt-5">
+
+    <div class="col-md-4">
+        <h3>Login Form:</h3>
+        <form [formGroup]="loginForm">
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter the email"
+                    formControlName="email">
+                <div class="errorMsg" *ngIf="!loginForm.get('email')?.valid && loginForm.get('email')?.touched">
+                    Please enter the email</div>
+            </div>
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" id="password" name="password" placeholder="Enter the Password"
+                    formControlName="password">
+                <div class="errorMsg" *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">
+                    Please enter the password</div>
+            </div>
+            <button type="submit" class="btn btn-success" (click)="loginUser()"
+                [disabled]="!loginForm.valid">Login</button>
+
+
+            <h3 class="pt-3 pb-3">OR</h3>
+
+            <button class="btn btn-primary" (click)="registerPage()">Register</button>
+
+        </form>
+
+    </div>
+</div>
